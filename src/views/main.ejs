@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="../js/main.js"></script>
+</head>
+
+<body>
+
+    <%- include('./partials/header'); %>
+
+        <div class="container">
+            <h1>Cachipun</h1>
+
+            <div id="result">
+                <img id="machine-img" src="./img/piedra.png">
+                <div id="start-text">
+                    Elija una opción
+                </div>
+                <img id="user-img" src="./img/piedra.png">
+            </div>
+            <div id="group-btn">
+                <button id="piedra" type="button" onclick="eleccionCachipun('piedra'); cachipunMaquina();">
+                    <img src="./img/piedra.png" />
+                </button>
+                <button id="papel" type="button" onclick="eleccionCachipun('papel'); cachipunMaquina();">
+                    <img src="./img/papel.png" />
+                </button>
+                <button id="tijera" type="button" onclick="eleccionCachipun('tijera'); cachipunMaquina();">
+                    <img src="./img/tijera.png" />
+                </button>
+            </div>
+        </div>
+
+        <%- include('./partials/footer'); %>
+</body>
+
+</html>
+
+<script>
+    let aux = 0;
+    let _intervalo = null;
+    function cachipunMaquina() {
+        _intervalo = setInterval(eleccionServer, 100);
+    }
+
+    function eleccionServer() {
+        // if (document.getElementById("start-text").style.background !== "white")
+        if (aux >= 10) {
+            clearInterval(_intervalo);
+            aux = 0;
+        }
+        var method = 'GET';
+        var url = 'http://localhost:5000/eleccionServer';
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+            xhr.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined") {
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+            xhr = null;
+        }
+        xhr.onload = function () {
+            var respuesta = JSON.parse(xhr.responseText)
+            if (respuesta.ok == true) {
+                const machineImg = document.getElementById("machine-img");
+                machineImg.src = "./img/" + respuesta.mensaje + ".png";
+                aux++;
+            } else {
+                alert('Error cachipunMaquina: ' + respuesta.mensaje);
+            }
+        };
+        return xhr.send();
+    }
+
+</script>
