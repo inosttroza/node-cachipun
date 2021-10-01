@@ -1,6 +1,9 @@
 # node-cachipun
 Juego cachipun (piedra, papel o tijera), desarrollado con nodeJs, express y ejs.
 
+## Jugar aca:
+😄 ya puedes jugar 🕹 este super juego del cachipun 🎮 [Presiona aqui para jugar](https://cachipun.herokuapp.com/) 🎰
+
 ## Instalación
 Para ejecutar este proyecto, ejecute localmente usando npm:
 
