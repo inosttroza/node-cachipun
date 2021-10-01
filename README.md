@@ -16,8 +16,8 @@ $ npm run dev
 3-ejs<br>
 4-morgan<br>
 
-![Screenshot](Captura.PNG)
-![Screenshot](Captura1.PNG)
-![Screenshot](Captura2.PNG)
-![Screenshot](Captura3.PNG)
+![Screenshot](Screenshot/Captura.PNG)
+![Screenshot](Screenshot/Captura1.PNG)
+![Screenshot](Screenshot/Captura2.PNG)
+![Screenshot](Screenshot/Captura3.PNG)
 
